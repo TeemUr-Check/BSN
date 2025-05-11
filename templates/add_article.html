@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка изображений</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles_index.css') }}">
+</head>
+<body>
+<h1>Загрузка изображения</h1>
+<form action="/upload" method="post">
+    <input type="text" name="nickname" placeholder="Ник-Нейм">
+    <input type="text" name="image_url" placeholder="URL изображения">
+    <input type="text" name="description" placeholder="Описание">
+    <button type="submit" class="button-64" role="button"><span class="text">Загрузить</span></button>
+</form>
+</body>
+</html>

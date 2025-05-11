@@ -1,0 +1,51 @@
+body {
+    font-family: Colibri, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: rgb(153,239,203);
+    background: linear-gradient(142deg, rgba(153,239,203,1) 0%, rgba(137,201,208,1) 32%, rgba(95,92,184,1) 64%, rgba(151,74,175,1) 100%);
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    color: #FFF;
+    font-size: 2.5rem;
+}
+
+.image-container {
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #fff;
+    width: 50%;
+    border-radius: 32px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+    color: #666;
+    font-size: 1.6rem;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+h2 {
+    text-align: center;
+    margin-top: 5px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+
+.nickname {
+    color: purple;
+    font-weight: bold;
+}

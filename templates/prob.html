@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск книги</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+<div class="container">
+    <h1>Поиск книги</h1>
+    <form action="/search" method="post">
+        <input type="text" name="search" placeholder="Введите название книги или её автора">
+        <h1>   </h1>
+        <button type="submit" class="button-64" role="button"><span class="text">Найти </span></button>
+    </form>
+    <div class="result">
+        {% if position %}
+        <p>Позиция книги: {{ position }}</p>
+        {% endif %}
+    </div>
+</div>
+</body>
+
+</html>
