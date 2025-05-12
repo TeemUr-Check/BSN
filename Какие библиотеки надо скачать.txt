@@ -1,3 +1,2 @@
 1. flask
 2. sqlite3
-3. pymorphy2
