@@ -65,8 +65,8 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
     color: #4600de; / изменен цвет текста на черный */
     display: flex;
-    margin-right: auto; /Размер внешних отступов справа/
-    margin-left: auto; /Размер внешних отступов слева/
+    margin-right: auto; /* центрирование */
+    margin-left: auto; /* центрирование */
     font-family: Phantomsans, sans-serif;
     font-size: 20px;
     justify-content: center;
