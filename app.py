@@ -1,31 +1,40 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
+import base64
 
 app = Flask(__name__)
 
-# Создаем базу данных SQLite
-conn = sqlite3.connect('images.db')
-c = conn.cursor()
-c.execute(
-    '''CREATE TABLE IF NOT EXISTS images (id INTEGER PRIMARY KEY AUTOINCREMENT, image_url TEXT, nickname, description TEXT)''')
-conn.commit()
 
-db_lp = sqlite3.connect('login_password.db')
-cursor_db = db_lp.cursor()
-
-db_lp.commit()
-
-cursor_db.close()
-db_lp.close()
+# Фильтр для base64 кодирования
+@app.template_filter('b64encode')
+def b64encode_filter(data):
+    return base64.b64encode(data).decode('utf-8')
 
 
-# главная страница
+# Инициализация базы данных
+def init_db():
+    conn = sqlite3.connect('images.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS images 
+                 (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                  image_url TEXT,
+                  nickname TEXT,
+                  description TEXT,
+                  image_data BLOB)''')  # Добавляем BLOB поле
+    conn.commit()
+    conn.close()
+
+
+init_db()  # Создаем таблицу при старте
+
+
+# Главная страница
 @app.route('/')
 def home():
     return render_template('before.html')
 
 
-# рассыльник
+# Рассыльник
 @app.route('/main')
 def main():
     return render_template('index.html')
@@ -37,46 +46,60 @@ def about():
     return render_template('about.html')
 
 
-# помощник
+# Помощник
 @app.route('/AI')
 def index():
     return render_template('Index2.0.html')
 
 
-# страница найти книгу
-
+# Галерея книг
 @app.route('/gallery')
 def gallery():
     conn = sqlite3.connect('images.db')
+    conn.row_factory = sqlite3.Row
     c = conn.cursor()
-    c.execute("SELECT * FROM images")
+    c.execute("SELECT * FROM images ORDER BY id DESC")
     images = c.fetchall()
-
+    conn.close()
     return render_template('gallery.html', images=images)
 
 
-# страница поделиться с другими книгой
+# Страница добавления книги
 @app.route('/share')
 def share():
     return render_template('add_article.html')
 
 
+# Обработчик загрузки
 @app.route('/upload', methods=['POST'])
 def upload():
-    image_url = request.form['image_url']
-    nickname = request.form['nickname']
-    description = request.form['description']
+    if request.method == 'POST':
+        try:
+            # Получаем данные формы
+            nickname = request.form['nickname']
+            description = request.form['description']
+            image_file = request.files['image']
 
-    conn = sqlite3.connect('images.db')
-    c = conn.cursor()
-    c.execute("INSERT INTO images (image_url, nickname, description) VALUES (?, ?, ?)",
-                 (image_url, nickname, description))
-    conn.commit()
+            # Читаем изображение
+            image_data = image_file.read()
 
-    return redirect(url_for('index'))
+            # Сохраняем в БД
+            conn = sqlite3.connect('images.db')
+            c = conn.cursor()
+            c.execute('''INSERT INTO images 
+                        (nickname, description, image_data) 
+                        VALUES (?, ?, ?)''',
+                      (nickname, description, image_data))
+            conn.commit()
+            conn.close()
+
+            return redirect(url_for('gallery'))
+        except Exception as e:
+            print(f"Ошибка загрузки: {e}")
+            return redirect(url_for('share'))
 
 
-# Авторизация
+# Авторизация (без изменений)
 @app.route('/authorization', methods=['GET', 'POST'])
 def form_authorization():
     if request.method == 'POST':
@@ -85,24 +108,18 @@ def form_authorization():
 
         db_lp = sqlite3.connect('login_password.db')
         cursor_db = db_lp.cursor()
-        cursor_db.execute(('''SELECT password FROM passwords
-                                               WHERE login = '{}';
-                                               ''').format(Login))
-        pas = cursor_db.fetchall()
-
+        cursor_db.execute('''SELECT password FROM passwords WHERE login = ?''', (Login,))
+        pas = cursor_db.fetchone()
         cursor_db.close()
-        try:
-            if pas[0][0] != Password:
-                return render_template('auth_bad.html')
-        except:
+
+        if not pas or pas[0] != Password:
             return render_template('auth_bad.html')
 
-        db_lp.close()
         return render_template('successfulauth.html')
-
     return render_template('authorization.html')
 
 
+# Регистрация (без изменений)
 @app.route('/registration', methods=['GET', 'POST'])
 def form_registration():
     if request.method == 'POST':
@@ -111,43 +128,35 @@ def form_registration():
 
         db_lp = sqlite3.connect('login_password.db')
         cursor_db = db_lp.cursor()
-        sql_insert = '''INSERT INTO passwords VALUES('{}','{}');'''.format(Login, Password)
-
-        cursor_db.execute(sql_insert)
-
-        cursor_db.close()
-
-        db_lp.commit()
-        db_lp.close()
-
-        return render_template('successfulregis.html')
-
+        try:
+            cursor_db.execute('''INSERT INTO passwords VALUES(?,?)''', (Login, Password))
+            db_lp.commit()
+            return render_template('successfulregis.html')
+        except sqlite3.IntegrityError:
+            return "Пользователь уже существует"
+        finally:
+            cursor_db.close()
+            db_lp.close()
     return render_template('registration.html')
 
 
-# Функция для выполнения поиска в базе данных
-def search_position(search_term):
-    conn = sqlite3.connect('images.db')
-    cursor = conn.cursor()
-    cursor.execute("SELECT description FROM images WHERE description LIKE ?", ('%' + search_term + '%',))
-    position = cursor.fetchone()
-    conn.close()
-    return position[0] if position else "Не найдено"
-
-
-# Обработчик для страницы запросов
+# Поиск (без изменений)
 @app.route('/explorer')
 def searching_page():
     return render_template('prob.html')
 
 
-# Обработчик для запросов из формы поиска
 @app.route('/search', methods=['POST'])
 def search():
     search_term = request.form['search']
-    position = search_position(search_term)
-    return render_template('prob.html', position=position)
+    conn = sqlite3.connect('images.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT description FROM images WHERE description LIKE ?",
+                   ('%' + search_term + '%',))
+    position = cursor.fetchone()
+    conn.close()
+    return render_template('prob.html', position=position[0] if position else "Не найдено")
 
 
 if __name__ == '__main__':
-    app.run(debug=True)  # ошибки показываются на странице
+    app.run(debug=True)
