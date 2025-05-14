@@ -4,49 +4,178 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a761e53-812d-4417-852f-17e50366e422" name="Changes" comment="">
+    <list default="true" id="78a554c1-27ff-4361-9c5c-cb618dc3306b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login_password.db" beforeDir="false" afterPath="$PROJECT_DIR$/login_password.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/auth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/auth_bad.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/auth_bad.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/example.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/example.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/example_for_REG_1.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/example_for_REG_1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/les1.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/les1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/regis.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/regis.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/successfulauth.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/successfulauth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/successfulregis.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/successfulregis.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles_gallery.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles_gallery.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles_index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles_index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Index2.0.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Index2.0.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_article.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_article.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/auth_bad.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/auth_bad.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/authorization.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/authorization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/before.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/before.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gallery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/prob.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prob.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/successfulauth.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/successfulauth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/successfulregis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/successfulregis.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "TeemUr-Check"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;TeemUr-Check&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/TeemUr-Check/BSN.git",
-    "accountId": "a13d03fa-2c4e-4ed8-a807-e8cb108aaf08"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/TeemUr-Check/BSN.git&quot;,
+    &quot;accountId&quot;: &quot;a13d03fa-2c4e-4ed8-a807-e8cb108aaf08&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
-  <component name="ProjectId" id="2wxM5jYdNamZcVCJ1ktOEJBlsIA" />
+  <component name="ProjectId" id="2dnu2geZqMMbJUKfARr9jJmX0yo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.app.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.REG_1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.REG_1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TheMain Page (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.asd.executor&quot;: &quot;Run&quot;,
+    &quot;Python.db.executor&quot;: &quot;Run&quot;,
+    &quot;Python.filters.executor&quot;: &quot;Run&quot;,
+    &quot;Python.flask.executor&quot;: &quot;Run&quot;,
+    &quot;Python.g.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.s.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ыва.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Приложения/PyCharm Community Edition 2023.2.1&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Приложения\PyCharm Community Edition 2023.2.1" />
+      <recent name="C:\Users\USER\PycharmProjects\pythonProject1" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\USER\PycharmProjects\pythonProject1" />
+      <recent name="C:\Users\USER\PycharmProjects\pythonProject1\templates" />
+      <recent name="C:\Users\USER\PycharmProjects\pythonProject1\static" />
+      <recent name="C:\Users\USER\PycharmProjects\pythonProject1\static\css" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.app">
+    <configuration name="REG_1 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="OPEN_AI_TEXT" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/REG_1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="REG_1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="OPEN_AI_TEXT" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\USER\PycharmProjects\pythonProject1\REG_1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TheMain Page (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="OPEN_AI_TEXT" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TheMain Page.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="BSN" />
+      <module name="OPEN_AI_TEXT" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -67,9 +196,42 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="db" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="OPEN_AI_TEXT" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/db.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.db" />
+      <item itemvalue="Python.REG_1 (1)" />
+      <item itemvalue="Python.REG_1" />
+      <item itemvalue="Python.TheMain Page (1)" />
+      <item itemvalue="Python.app" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.db" />
+        <item itemvalue="Python.REG_1 (1)" />
+        <item itemvalue="Python.TheMain Page (1)" />
+        <item itemvalue="Python.REG_1" />
       </list>
     </recent_temporary>
   </component>
@@ -83,11 +245,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4a761e53-812d-4417-852f-17e50366e422" name="Changes" comment="" />
-      <created>1746978589553</created>
+      <changelist id="78a554c1-27ff-4361-9c5c-cb618dc3306b" name="Changes" comment="" />
+      <created>1710655957647</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1746978589553</updated>
+      <updated>1710655957647</updated>
     </task>
     <servers />
   </component>
