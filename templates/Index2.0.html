@@ -1,29 +1,180 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AI Book Assistant</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GigaChat API Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        #chat-container {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+            height: 400px;
+            overflow-y: auto;
+        }
+        #message-input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .user-message {
+            background-color: #e6f7ff;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #f0f0f0;
+            text-align: left;
+        }
+        #api-key-container {
+            margin-bottom: 20px;
+        }
+        #api-key-input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
+    <h1>GigaChat API Client</h1>
 
-<h1>AI Book Assistant</h1>
-<p> Твой личный AI Помощник,
-    который ответит на любой вопрос
-    и подскажет что и как почитать!
-</p>
+    <div id="api-key-container">
+        <label for="api-key-input">Введите ваш API-ключ GigaChat:</label>
+        <input type="password" id="api-key-input" placeholder="Введите ваш API-ключ">
+        <button id="save-api-key">Сохранить ключ</button>
+    </div>
 
-<div id="messages">
+    <div id="chat-container"></div>
+    <input type="text" id="message-input" placeholder="Введите ваше сообщение...">
+    <button id="send-button">Отправить</button>
 
-</div>
+    <script>
+        // Элементы DOM
+        const apiKeyInput = document.getElementById('api-key-input');
+        const saveApiKeyButton = document.getElementById('save-api-key');
+        const chatContainer = document.getElementById('chat-container');
+        const messageInput = document.getElementById('message-input');
+        const sendButton = document.getElementById('send-button');
 
-<form onsubmit="submitForm(event)">
-    <input type="text" id="input" placeholder="Введите запрос"/>
-</form>
+        // Проверяем, есть ли сохраненный API-ключ
+        const savedApiKey = localStorage.getItem('gigachat-api-key');
+        if (savedApiKey) {
+            apiKeyInput.value = savedApiKey;
+        }
 
-    <script src="{{ url_for('static', filename='index.js') }}"></script>
+        // Сохраняем API-ключ
+        saveApiKeyButton.addEventListener('click', () => {
+            const apiKey = apiKeyInput.value.trim();
+            if (apiKey) {
+                localStorage.setItem('gigachat-api-key', apiKey);
+                alert('API-ключ сохранен!');
+            } else {
+                alert('Пожалуйста, введите API-ключ');
+            }
+        });
+
+        // Отправка сообщения
+        sendButton.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Функция отправки сообщения
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            const apiKey = localStorage.getItem('gigachat-api-key');
+            if (!apiKey) {
+                alert('Пожалуйста, сначала сохраните ваш API-ключ');
+                return;
+            }
+
+            // Добавляем сообщение пользователя в чат
+            addMessageToChat(message, 'user');
+            messageInput.value = '';
+
+            try {
+                // Получаем ответ от GigaChat
+                const response = await fetchGigaChatResponse(apiKey, message);
+
+                // Добавляем ответ в чат
+                addMessageToChat(response, 'bot');
+            } catch (error) {
+                console.error('Ошибка:', error);
+                addMessageToChat('Произошла ошибка при получении ответа от GigaChat.', 'bot');
+            }
+        }
+
+        // Функция для запроса к GigaChat API
+        async function fetchGigaChatResponse(apiKey, message) {
+            // Эндпоинт API GigaChat (уточните правильный URL в документации)
+            const apiUrl = 'https://gigachat.devices.sberbank.ru/api/v1/chat/completions';
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model: "GigaChat", // Уточните актуальное название модели
+                    messages: [
+                        {
+                            role: "user",
+                            content: message
+                        }
+                    ],
+                    temperature: 0.7,
+                    max_tokens: 1000
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Ошибка API: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.choices[0].message.content;
+        }
+
+        // Функция добавления сообщения в чат
+        function addMessageToChat(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+            messageElement.textContent = message;
+            chatContainer.appendChild(messageElement);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    </script>
 </body>
 </html>
