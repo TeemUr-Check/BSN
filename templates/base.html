@@ -18,33 +18,29 @@
         <nav class="horizontal-nav primary-wrapper" role='navigation'>
             <ul>
                 <li class="active-link"><a href="/main">Главная</a></li>
-                <li><a href="/AI">AI Ассистент</a></li>
                 <li><a href="/share">Поделиться книгой</a></li>
                 <li><a href="/gallery">Галерея книг</a></li>
                 <li><a href="/explorer">Найти книгу</a></li>
                 <li><a href="/about">О нас</a></li>
+                <!-- Добавленная кнопка выхода -->
+                <li><a href="/logout" style="color: #ff4444;">Выйти</a></li>
             </ul>
         </nav>
         <label for="mobile-menu-toggle" class="mobile-menu-label hidden"></label>
     </div>
 
+    <!-- Остальная часть шапки без изменений -->
     <div class="banner">
-
         <div class="banner-image"></div>
-
         <div class="primary-wrapper">
-
             <h1 class="site-title"><a href="#">BOOK SWAP NETWORK</a></h1>
             <div class="site-tagline">"Книга — такое же явление жизни, как человек, она — тоже факт живой, говорящий, и
                 она менее «вещь», чем все другие вещи, созданные и создаваемые человеком."
             </div>
             <div class="site-tagline">М. Горький
             </div>
-
         </div>
-
     </div>
-
 </header>
 
 {% block body %}{% endblock %}
