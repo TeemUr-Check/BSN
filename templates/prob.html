@@ -5,66 +5,173 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Поиск книги</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --light-bg: #f8f1ff;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
         .search-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 2rem auto;
-            padding: 2rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
+
         .search-title {
-            color: #5f5cb8;
+            color: var(--primary-color);
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
         }
+
+        .search-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
         .search-btn {
-            background: #5f5cb8;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
             border: none;
-            padding: 10px;
+            padding: 12px;
             width: 100%;
-            border-radius: 5px;
-            transition: background 0.3s;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
         }
+
         .search-btn:hover {
-            background: #4a4895;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);
+            color: white;
         }
+
         .result-box {
             margin-top: 1.5rem;
-            padding: 1rem;
+            padding: 1.5rem;
             background: white;
-            border-radius: 5px;
-            border-left: 4px solid #5f5cb8;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .not-found-box {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #fff5f5;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid #ff6b6b;
+        }
+
+        footer {
+            margin-top: auto;
+            background-color: white;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
         }
     </style>
 </head>
 <body>
 <div class="container py-5">
     <div class="search-container">
-        <h1 class="search-title">Поиск книги</h1>
-        <form action="/search" method="post">
-            <div class="mb-3">
+        <h1 class="search-title"><i class="bi bi-search me-2"></i>Поиск книги</h1>
+        <form action="/search" method="post" onsubmit="return normalizeSearch()">
+            <div class="mb-4">
                 <input type="text"
                        name="search"
-                       class="form-control"
+                       id="searchInput"
+                       class="form-control form-control-lg"
                        placeholder="Введите описание книги"
                        required>
             </div>
-            <button type="submit" class="btn search-btn">Найти</button>
+            <button type="submit" class="btn search-btn">
+                <i class="bi bi-search me-2"></i>Найти книгу
+            </button>
         </form>
 
         {% if position %}
-        <div class="result-box mt-3">
             {% if position == "Не найдено" %}
-            <p class="mb-0 text-danger">{{ position }}</p>
+            <div class="not-found-box">
+                <p class="mb-0 text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>{{ position }}</p>
+            </div>
             {% else %}
-            <p class="mb-0"><strong>Найдено:</strong> {{ position }}</p>
+            <div class="result-box">
+                <p class="mb-0"><strong><i class="bi bi-book me-2"></i>Найдено:</strong> {{ position }}</p>
+            </div>
             {% endif %}
-        </div>
         {% endif %}
     </div>
 </div>
+
+<!-- FOOTER -->
+<footer class="footer mt-auto">
+    <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p class="col-md-4 mb-0 text-body-secondary">
+                © 2025 Book Swap Network
+            </p>
+
+            <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <i class="bi bi-book fs-3" style="color: var(--primary-color);"></i>
+            </a>
+
+            <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item"><a href="/main" class="nav-link px-2 text-body-secondary">Главная</a></li>
+                <li class="nav-item"><a href="/about" class="nav-link px-2 text-body-secondary">О нас</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Функция для нормализации поискового запроса перед отправкой
+    function normalizeSearch() {
+        const searchInput = document.getElementById('searchInput');
+        // Приводим к нижнему регистру и удаляем лишние пробелы
+        searchInput.value = searchInput.value.toLowerCase().trim();
+        return true;
+    }
+
+    // Альтернативный вариант для более сложной нормализации
+    /*
+    function normalizeSearch() {
+        const searchInput = document.getElementById('searchInput');
+        let query = searchInput.value;
+        // Приводим к нижнему регистру
+        query = query.toLowerCase();
+        // Удаляем лишние пробелы
+        query = query.trim();
+        // Заменяем множественные пробелы на один
+        query = query.replace(/\s+/g, ' ');
+        // Можно добавить другие преобразования, например удаление знаков препинания
+        searchInput.value = query;
+        return true;
+    }
+    */
+</script>
 </body>
 </html>
