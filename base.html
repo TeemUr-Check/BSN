@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<!-- ШАПКА ДЛЯ ВСЕХ САЙТОВ -->
+<body>
+<header class="header-banner-top">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/les1.css') }}">
+    <div class="main-navigation">
+        <input type="checkbox" name="mobile-menu-toggle" id="mobile-menu-toggle" class="mobile-menu-box"/>
+        <nav class="horizontal-nav primary-wrapper" role='navigation'>
+            <ul>
+                <li class="active-link"><a href="/main">Главная</a></li>
+                <li><a href="/share">Поделиться книгой</a></li>
+                <li><a href="/gallery">Галерея книг</a></li>
+                <li><a href="/explorer">Найти книгу</a></li>
+                <li><a href="/about">О нас</a></li>
+                <!-- Добавленная кнопка выхода -->
+                <li><a href="/logout" style="color: #ff4444;">Выйти</a></li>
+            </ul>
+        </nav>
+        <label for="mobile-menu-toggle" class="mobile-menu-label hidden"></label>
+    </div>
+
+    <!-- Остальная часть шапки без изменений -->
+    <div class="banner">
+        <div class="banner-image"></div>
+        <div class="primary-wrapper">
+            <h1 class="site-title"><a href="#">BOOK SWAP NETWORK</a></h1>
+            <div class="site-tagline">"Книга — такое же явление жизни, как человек, она — тоже факт живой, говорящий, и
+                она менее «вещь», чем все другие вещи, созданные и создаваемые человеком."
+            </div>
+            <div class="site-tagline">М. Горький
+            </div>
+        </div>
+    </div>
+</header>
+
+{% block body %}{% endblock %}
+
+
+<!-- FOOTER -->
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-body-secondary">
+            <ya-tr-span data-index="1-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                        data-value="© 2025 BCN, Inc" data-translation="© 2025 BCN, Inc" data-ch="0"
+                        data-type="trSpan" style="visibility: initial !important;">© 2025 BCN, Inc
+            </ya-tr-span>
+        </p>
+
+        <a href="/"
+           class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="/main" class="nav-link px-2 text-body-secondary">
+                <ya-tr-span data-index="2-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                            data-value="Home" data-translation="Главная" data-ch="0" data-type="trSpan"
+                            style="visibility: initial !important;">Главная
+                </ya-tr-span>
+            </a></li>
+            <li class="nav-item"><a href="/about" class="nav-link px-2 text-body-secondary">
+                <ya-tr-span data-index="6-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                            data-value="About" data-translation="О нас" data-ch="0" data-type="trSpan"
+                            style="visibility: initial !important;">О нас
+                </ya-tr-span>
+            </a></li>
+        </ul>
+    </footer>
+</div>
+</body>
+</html>

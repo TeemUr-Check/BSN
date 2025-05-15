@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+<div class="container text-center mt-4">
+    <!-- Заголовок -->
+    <h1 class="mb-4">Немного о нас</h1>
+
+    <!-- Логотип -->
+    <img src="https://s3.ca-central-1.amazonaws.com/logojoy/logos/179672735/no_padding.png"
+         class="img-fluid d-block mx-auto mb-4"
+         style="max-width: 800px; max-height: 400px;">
+
+    <!-- Текст -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 text-start">
+            <p class="mb-3">
+                <strong>Book Swap Network</strong> - сайт, созданный в <strong>2025 году</strong>.
+                Написанный на самых <strong>современных языках
+                программирования</strong>.
+                <strong>BSN</strong> представляет из себя <strong>уникальную среду</strong>, которая не имеет аналогов,
+                ни в нашей стране, ни за её пределами.
+            </p>
+
+            <p class="mb-3">
+                Все <strong>новости сайта</strong> и его <strong>обновления</strong> будут появляться именно на этой
+                странице.
+            </p>
+        </div>
+    </div>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="col-lg-8">
+            <div class="card border-light shadow" style="background-color: #f8f1ff;">
+                <div class="card-header text-white"
+                     style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);">
+                    <h3 class="card-title mb-0 text-center"><i class="bi bi-megaphone me-2"></i> Важное обновление!</h3>
+                </div>
+                <div class="card-body text-center">
+                    <h4 class="mb-3" style="color: #6a11cb;">Мы обновили сайт, и теперь он работает намного лучше!</h4>
+
+                    <div class="d-flex justify-content-center">
+                        <ul class="list-group list-group-flush mb-3 text-start"
+                            style="max-width: 500px; background-color: transparent;">
+                            <li class="list-group-item" style="background-color: rgba(106, 17, 203, 0.05);">
+                                <span class="badge bg-purple me-2">📚</span>
+                                <strong>Новая галерея книг</strong> - удобный просмотр всей коллекции
+                            </li>
+                            <li class="list-group-item" style="background-color: rgba(106, 17, 203, 0.05);">
+                                <span class="badge bg-purple me-2">🔐</span>
+                                <strong>Улучшенная регистрация</strong> - теперь нет багов с вылетом сайта при указании существуещего ник-нейма
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="alert mb-0 mx-auto"
+                         style="max-width: 600px; background-color: #e2d1f9; border-color: #b185db; color: #4b0082;">
+                        <i class="bi bi-stars me-2"></i> Обновление доступно для всех пользователей!
+                    </div>
+                </div>
+                <div class="card-footer small text-center" style="background-color: #e2d1f9; color: #6a11cb;">
+                    <i class="bi bi-calendar-event me-1"></i> Обновлено 5 мая 2025
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- FOOTER -->
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-body-secondary">
+            <ya-tr-span data-index="1-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                        data-value="© 2025 Company, Inc" data-translation="© 2025 Company, Inc" data-ch="0"
+                        data-type="trSpan" style="visibility: initial !important;">© 2025 Company, Inc
+            </ya-tr-span>
+        </p>
+
+        <a href="/"
+           class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="/main" class="nav-link px-2 text-body-secondary">
+                <ya-tr-span data-index="2-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                            data-value="Home" data-translation="Главная" data-ch="0" data-type="trSpan"
+                            style="visibility: initial !important;">Главная
+                </ya-tr-span>
+            </a></li>
+            <li class="nav-item"><a href="/about" class="nav-link px-2 text-body-secondary">
+                <ya-tr-span data-index="6-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                            data-value="About" data-translation="О нас" data-ch="0" data-type="trSpan"
+                            style="visibility: initial !important;">О нас
+                </ya-tr-span>
+            </a></li>
+        </ul>
+    </footer>
+</div>
+</body>
+</html>

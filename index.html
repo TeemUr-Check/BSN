@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+<div class='container'>
+    <h1> Book Swap Network
+    </h1>
+    <p>   </p>
+    <p>   </p>
+    <p>   </p>
+    <p>   </p>
+    <p> Book Swap Network(BSN) - это онлайн-платформа для обмена книгами, которая позволяет пользователям найти,
+        обменять свои
+        книги с другими любителями чтения. Также вы можете поделиться своими книгами или продать их.
+        Наш сайт предлагает широкий выбор книг различных жанров - от классики до современной литературы.</p>
+</div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<div class="main-container">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/example.css') }}">
+    <div class="heading">
+        <h1 class="heading__title">Наши сервисы</h1>
+    </div>
+    <div class="cards">
+        <div class="card card-2">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <p class="card__exit"><i class="fas fa-times"></i></p>
+            <h2 class="card__title">Выставить свои книги с целью обмена или продажи на сайте</h2>
+            <p class="card__apply">
+                <a class="card__link" href="/share">Выставить<i class="fas fa-arrow-right"></i></a>
+            </p>
+        </div>
+        <div class="card card-3">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <p class="card__exit"><i class="fas fa-times"></i></p>
+            <h2 class="card__title">Галерея книг, где выставлены все книги пользователей, на которые вы можете обменять свои или купить их</h2>
+            <p class="card__apply">
+                <a class="card__link" href="/gallery">Посмотреть <i class="fas fa-arrow-right"></i></a>
+            </p>
+        </div>
+        <div class="card card-4">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <p class="card__exit"><i class="fas fa-times"></i></p>
+            <h2 class="card__title">Найти книгу других пользователей по ключевым словам книги: автора или названия</h2>
+            <p class="card__apply">
+                <a class="card__link" href="/explorer">Найти <i class="fas fa-arrow-right"></i></a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

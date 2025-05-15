@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея книг</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles_gallery.css') }}">
+    <style>
+        .book-card {
+            transition: transform 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .book-cover {
+            height: 200px;
+            object-fit: contain;
+            background-color: #f8f9fa;
+            padding: 10px;
+        }
+
+        .user-nickname {
+            color: #5f5cb8;
+            font-weight: bold;
+        }
+
+        .book-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .book-title {
+            color: #495057;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        .action-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+        }
+
+        .sell-badge {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .exchange-badge {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .contact-modal-body {
+            padding: 20px;
+        }
+
+        .contact-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .book-cover {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container py-5">
+    <h1 class="text-center mb-5 gallery-title">Галерея книг</h1>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for image in images %}
+        <div class="col">
+            <div class="card book-card h-100 shadow-sm">
+                    <span class="badge rounded-pill action-badge {% if image['action_type'] == 'sell' %}sell-badge{% else %}exchange-badge{% endif %}">
+                        {% if image['action_type'] == 'sell' %}Продажа{% else %}Обмен{% endif %}
+                    </span>
+
+                <div class="card-header bg-white">
+                    <span class="user-nickname">{{ image['nickname'] }}</span>
+                </div>
+
+                <div class="row g-0">
+                    <div class="col-md-5 d-flex align-items-center">
+                        <img src="data:image/jpeg;base64,{{ image['image_data'] | b64encode }}"
+                             class="img-fluid book-cover w-100"
+                             alt="{{ image['title'] }}">
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <!-- Название книги (добавлено по требованию) -->
+                            <h5 class="book-title">{{ image['title'] }}</h5>
+
+                            <p class="card-text book-description">{{ image['description'][:100] }}{% if
+                                image['description']|length > 100 %}...{% endif %}</p>
+                            <button class="btn btn-sm" style="background-color: #5f5cb8; color: white;"
+                                    data-bs-toggle="modal" data-bs-target="#imageModal{{ image['id'] }}">
+                                Подробнее
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Основное модальное окно -->
+        <div class="modal fade" id="imageModal{{ image['id'] }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ image['title'] }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="data:image/jpeg;base64,{{ image['image_data'] | b64encode }}"
+                             class="img-fluid rounded mb-3"
+                             alt="{{ image['title'] }}">
+                        <p><strong>Владелец:</strong> <span class="user-nickname">{{ image['nickname'] }}</span></p>
+                        <p><strong>Тип:</strong> {% if image['action_type'] == 'sell' %}Продажа{% else %}Обмен{% endif
+                            %}</p>
+                        <p><strong>Описание:</strong></p>
+                        <p>{{ image['description'] }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn" style="background-color: #5f5cb8; color: white;"
+                                data-bs-toggle="modal" data-bs-target="#contactModal{{ image['id'] }}"
+                                data-bs-dismiss="modal">
+                            Связаться
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Модальное окно контактов -->
+        <div class="modal fade" id="contactModal{{ image['id'] }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Контактные данные</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body contact-modal-body">
+                        <p><strong>Книга:</strong> {{ image['title'] }}</p>
+                        <p><strong>Владелец:</strong> {{ image['nickname'] }}</p>
+                        <div class="contact-info">
+                            <h6>Контакт для связи:</h6>
+                            <!-- Конкретное значение контакта из БД -->
+                            <p class="mb-0">{{ image['contact'] }}</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
