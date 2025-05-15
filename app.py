@@ -46,12 +46,6 @@ def about():
     return render_template('about.html')
 
 
-# Помощник
-@app.route('/AI')
-def index():
-    return render_template('Index2.0.html')
-
-
 # Галерея книг
 @app.route('/gallery')
 def gallery():
@@ -156,6 +150,11 @@ def search():
     position = cursor.fetchone()
     conn.close()
     return render_template('prob.html', position=position[0] if position else "Не найдено")
+
+
+@app.route('/logout')
+def logout():
+    return redirect(url_for('home'))
 
 
 if __name__ == '__main__':
